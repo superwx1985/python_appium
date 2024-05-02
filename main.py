@@ -9,12 +9,14 @@ capabilities = dict(
     platformName='Android',
     automationName='uiautomator2',
     deviceName='Android',
-    appPackage="com.android.launcher3",
-    appActivity=".launcher3.Launcher",
+    appPackage="com.google.android.apps.nexuslauncher",
+    appActivity=".NexusLauncherActivity",
     # language='EN',
     # locale='US',
     # udid='dc289c11'
-    udid='127.0.0.1:62001'
+    # udid='127.0.0.1:62001',
+    # udid='559acdf7',
+    udid='emulator-5554'
 )
 
 
@@ -32,6 +34,7 @@ class TestAppium:
     # @pytest.mark.debug
     # @pytest.mark.skip(reason="skip test")
     @pytest.mark.run(order=1)
+    @pytest.mark.skip
     def test_find_WLAN(self) -> None:
         package_name = "com.android.settings"
         activity_name = ".Settings"
@@ -41,6 +44,10 @@ class TestAppium:
         el.click()
         time.sleep(2)
         assert ".Settings$WifiSettingsActivity" == self.driver.current_activity
+
+    @pytest.mark.run(order=1)
+    def test_find_battery(self) -> None:
+        ackage_name = "com.android.settings"
 
     @pytest.mark.run(order=2)
     def test_switch_another_app(self):

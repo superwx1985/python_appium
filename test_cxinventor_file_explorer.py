@@ -15,7 +15,8 @@ capabilities = dict(
     # language='EN',
     # locale='US',
     # udid='dc289c11'
-    udid='127.0.0.1:62001'
+    # udid='127.0.0.1:62001'
+    udid='559acdf7'
 )
 
 
