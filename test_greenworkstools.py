@@ -1,6 +1,7 @@
 import pytest
 import time
-
+import datetime
+from os import path
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
@@ -9,6 +10,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 app_package = "com.greenworks.tools"
 app_activity = "crc64b7a660292f5c8d3e.MainActivity"
 email = f'{time.time()}@outlook.com'
+screenshot_path = 'screenshot/'
 
 capabilities = dict(
     platformName='Android',
@@ -84,6 +86,7 @@ class TestAppium:
         dr.find_element(by=AppiumBy.XPATH, value='//android.widget.Button[@text="CREATE ACCOUNT"]').click()
         time.sleep(5)
         assert dr.find_element(by=AppiumBy.XPATH, value='//android.widget.TextView[@text="Soon friends!"]')
+        dr.save_screenshot(path.join(screenshot_path, f"{datetime.datetime.now().strftime("%Y_%m_%d_%H_%M_%S")}.png"))
 
 
 if __name__ == '__main__':
